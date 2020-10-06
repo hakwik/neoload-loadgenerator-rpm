@@ -1,0 +1,16 @@
+[Unit]
+Description=NeoLoad Load Generator Agent
+Before=multi-user.target graphical.target
+After=network-online.target remote-fs.target time-sync.target
+Wants=network-online.target
+
+[Service]
+User=neoload
+Group=neoload
+LimitNOFILE=65536
+ExecStart=/opt/neoload/bin/LoadGeneratorAgentService start-launchd
+SuccessExitStatus=0 143
+
+[Install]
+WantedBy=multi-user.target graphical.target
+
